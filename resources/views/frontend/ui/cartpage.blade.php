@@ -105,10 +105,14 @@
                        <a href="{{route('login')}}" type="button" class="btn btn-primary">Login to Checkout</a>
                     @else
                     {{-- if the customer is already login,we will show the checkout button --}}
-                      <button type="submit" class="btn btn-primary">Checkout</button>
+                      <button type="submit" class="btn btn-primary" @role('owner')disabled @endrole>Checkout</button>
+
+                    @role('owner')
+                        <p class="text-danger">You are an owner!</p>
+                    @endrole
                     @endguest
 
-
+              
 
                   </form>
               </div>
@@ -117,6 +121,7 @@
   </section>
 @endsection
 
+{{-- checkout --}}
 @section('script')
 <script>
     function checkout()
@@ -167,7 +172,7 @@
         itemstring: itemstring
     }).done(function(data){
         console.log("Done",data);
-        localStorage.clear();
+        localStorage.clear();//clear the local storage
         $('#cart-count').text('0')//for cart busket
         $('#cardTable').html('<h3 class="text-center">Your order has been placed! </h3>');//replace card table with this sentence
         $('#phone').val('');

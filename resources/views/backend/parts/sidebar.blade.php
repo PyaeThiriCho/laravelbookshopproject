@@ -124,6 +124,13 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Author</span></a>
             </li>
+
+              <!--Order-->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('orders.index')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Order</span></a>
+            </li>
             
 
 
